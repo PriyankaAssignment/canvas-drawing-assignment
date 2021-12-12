@@ -21,7 +21,7 @@ public class ColorImpl extends CanvasImpl {
 		grid=sdm.getGrid();
 		char color = sdm.getColor();
 		if (!sdm.coordinatesFitInCanvas(sdm))
-			throw new RuntimeException("The supplied coordinate is outside of the current canvas");
+			throw new CanvasDrawingException("The supplied coordinate is outside of the current canvas");
 		if (grid[y - 1][x - 1] == 'x') {
 			return;
 		}
