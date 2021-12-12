@@ -23,11 +23,11 @@ public class CanvasImpl implements ICanvas {
 	}
 
 	public void drawCanvas(int height, int width, char[][] grid) {
-		System.out.print("-");
+		 System.out.print(" ");
 		for (int ii = 0; ii < width; ii++) {
 			System.out.print("-");
 		}
-		System.out.println("-");
+		System.out.print("\n");
 		for (int rowNum = 0; rowNum < height; rowNum++) {
 			System.out.print("|");
 			for (int ii = 0; ii < width; ii++) {
@@ -36,12 +36,12 @@ public class CanvasImpl implements ICanvas {
 					printChar = ' ';
 				System.out.print(printChar);
 			}
-			System.out.print("|\n");
+			System.out.println("|");
 		}
-		System.out.print("-");
+		System.out.print(" ");
 		for (int ii = 0; ii < width; ii++) {
 			System.out.print("-");
 		}
-		System.out.println("-");
+		
 	}
 }

@@ -11,26 +11,26 @@ import com.soc.gen.util.ShapeDimensionsModel.DrawingCommand;
 
 public class CanvasFactory {
 	ICanvas canvasRef;
-	public ICanvas execute(ShapeDimensionsModel cc) {
+	public ICanvas execute(ShapeDimensionsModel sdm) {
 
-		if (cc.getCmdType() == DrawingCommand.CREATE) {
+		if (sdm.getCmdType() == DrawingCommand.CREATE) {
 			canvasRef = new CanvasImpl();
 		}
-		if (cc.getCmdType() == DrawingCommand.LINE) {
-			if (cc.getGrid() == null)
+		if (sdm.getCmdType() == DrawingCommand.LINE) {
+			if (sdm.getGrid() == null)
 				throw new CanvasDrawingException("Please create a canvas first in order to draw a line");
 			canvasRef = new LineImpl();
 		}
 
-		if (cc.getCmdType() == DrawingCommand.RECTANGLE) {
-			if (cc.getGrid() == null)
+		if (sdm.getCmdType() == DrawingCommand.RECTANGLE) {
+			if (sdm.getGrid() == null)
 				throw new CanvasDrawingException("Please create a canvas first in order to draw a rectangle");
 			canvasRef = new RectangleImpl();
 		}
 
-		if (cc.getCmdType() == DrawingCommand.FILL) {
+		if (sdm.getCmdType() == DrawingCommand.FILL) {
 
-			if (cc.getGrid() == null)
+			if (sdm.getGrid() == null)
 				throw new CanvasDrawingException("Please create a canvas first in order to fill the color");
 			canvasRef = new ColorImpl();
 		}

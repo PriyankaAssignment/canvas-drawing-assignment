@@ -18,9 +18,9 @@ public class DrawingAssignmentApplication {
 	public void verifyCommand(String cmdStr) {
 
 		// verify canvas command and set the values in model
-		char cmdChar=0;
-		if(!cmdStr.isEmpty())
-		cmdChar = Character.toUpperCase(cmdStr.charAt(0));
+		char cmdChar = 0;
+		if (!cmdStr.isEmpty())
+			cmdChar = Character.toUpperCase(cmdStr.charAt(0));
 		Pattern p;
 		Matcher m;
 		switch (cmdChar) {
@@ -45,6 +45,8 @@ public class DrawingAssignmentApplication {
 					canvasRef = new CanvasFactory().execute(c);
 					canvasRef.executeDrawCommand(c);
 				} catch (CanvasDrawingException e) {
+					System.out.println(e.getMessage());
+				} catch (RuntimeException e) {
 					System.out.println(e.getMessage());
 				}
 			} else {
@@ -77,6 +79,8 @@ public class DrawingAssignmentApplication {
 					canvasRef.executeDrawCommand(c);
 				} catch (CanvasDrawingException e) {
 					System.out.println(e.getMessage());
+				} catch (RuntimeException e) {
+					System.out.println(e.getMessage());
 				}
 			} else {
 				throw new CanvasDrawingException("Invalid create line command");
@@ -105,6 +109,8 @@ public class DrawingAssignmentApplication {
 					canvasRef.executeDrawCommand(c);
 				} catch (CanvasDrawingException e) {
 					System.out.println(e.getMessage());
+				} catch (RuntimeException e) {
+					System.out.println(e.getMessage());
 				}
 			} else {
 				throw new CanvasDrawingException("Invalid create rectangle command");
@@ -130,6 +136,8 @@ public class DrawingAssignmentApplication {
 					canvasRef = new CanvasFactory().execute(c);
 					canvasRef.executeDrawCommand(c);
 				} catch (CanvasDrawingException e) {
+					System.out.println(e.getMessage());
+				} catch (RuntimeException e) {
 					System.out.println(e.getMessage());
 				}
 			} else {
@@ -162,7 +170,7 @@ public class DrawingAssignmentApplication {
 			System.out.println(
 					"L:draw horizonal/vertical lines please provide x-axes and y-axis for the line Ex: L 5 6 5 7 ");
 			System.out.println("R:draw rectangl please provide x-axes and y-axes for the canvas Ex: R 4 5 7 8");
-			System.out.println("B:fill the color please provide x-axes and y-axes for filling the color Ex: B 4 5 r");
+			System.out.println("B:fill the color please provide x-axes and y-axes for filling the color Ex: B 2 3 r");
 			System.out.println("Q:to quit the program Ex: Q");
 			try {
 				InputStreamReader isr = new InputStreamReader(System.in);
@@ -171,7 +179,7 @@ public class DrawingAssignmentApplication {
 				sd.verifyCommand(command);
 			} catch (CanvasDrawingException e) {
 				System.out.println(e.getMessage());
-			} catch (NullPointerException e) {
+			} catch (RuntimeException e) {
 				System.out.println(e.getMessage());
 			}
 		}

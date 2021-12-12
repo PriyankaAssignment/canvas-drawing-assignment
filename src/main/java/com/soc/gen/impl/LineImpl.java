@@ -26,8 +26,8 @@ public class LineImpl extends CanvasImpl {
 	}
 
 	public void drawLine(int x1, int y1, int x2, int y2, char[][] grid,int height,int width) {
-		        for (int row = y1 - 1; row <= y2 - 1 && row < height; row++) {
-		            for (int col = x1 - 1; col <= x2 - 1 && col < width; col++) {
+		        for (int row = y1 - 1; row < y2  && row < height; row++) {
+		            for (int col = x1 - 1; col < x2  && col < width; col++) {
 		                grid[row][col] ='x';
 		            }
 		        
