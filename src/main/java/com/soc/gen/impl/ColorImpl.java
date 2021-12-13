@@ -19,9 +19,10 @@ public class ColorImpl extends CanvasImpl {
 		char color = sdm.getColor();
 		if (!sdm.coordinatesFitInCanvas(sdm))
 			throw new CanvasDrawingException("coordinates is outside of the current canvas");
-		if (grid[y1 - 1][x1 - 1] == 'x') {
-			throw new CanvasDrawingException("Please select different axes");
-		}
+		/*
+		 * if (grid[x1 - 1][y1 - 1] == 'x') { throw new
+		 * CanvasDrawingException("Please select different axes"); }
+		 */
 		Point c = new Point(x1, y1);
 		Queue<Point> q = new LinkedList<Point>();
 		q.add(c);
@@ -29,18 +30,16 @@ public class ColorImpl extends CanvasImpl {
         int vis[][]=new int[sdm.getWidth()][sdm.getHeight()];
         
        // Initialing all as zero
-       for(int i=0;i<sdm.getWidth();i++){
-           for(int j=0;j<sdm.getHeight();j++){
-               vis[i][j]=0;
-           }
-       }
+		/*
+		 * for(int i=0;i<sdm.getWidth();i++){ for(int j=0;j<sdm.getHeight();j++){
+		 * vis[i][j]=0; } }
+		 */
 		vis[x1][y1]= 1;
 		while (!q.isEmpty()) {
 			Point topCel = q.peek();
 			 int x = topCel.getX();
 	         int y = topCel.getY();
 			grid[x][y]=color;			
-			
 			q.remove();
 			// For Upside Pixel or Cell
 			 if (x<sdm.getWidth()-1 && vis[x + 1][y] == 0 && grid[x + 1][y] != 'x' && grid[x + 1][y] != color)
