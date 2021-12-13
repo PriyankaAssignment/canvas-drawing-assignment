@@ -19,10 +19,10 @@ public class ColorImpl extends CanvasImpl {
 		char color = sdm.getColor();
 		if (!sdm.coordinatesFitInCanvas(sdm))
 			throw new CanvasDrawingException("coordinates is outside of the current canvas");
-		/*
-		 * if (grid[x1 - 1][y1 - 1] == 'x') { throw new
-		 * CanvasDrawingException("Please select different axes"); }
-		 */
+		
+		  if (grid[y1 - 1][x1 - 1] == '*') { throw new
+		  CanvasDrawingException("Please select different axes"); }
+		 
 		Point c = new Point(x1, y1);
 		Queue<Point> q = new LinkedList<Point>();
 		q.add(c);
@@ -42,28 +42,28 @@ public class ColorImpl extends CanvasImpl {
 			grid[x][y]=color;			
 			q.remove();
 			// For Upside Pixel or Cell
-			 if (x<sdm.getWidth()-1 && vis[x + 1][y] == 0 && grid[x + 1][y] != 'x' && grid[x + 1][y] != color)
+			 if (x<sdm.getWidth()-1 && vis[x + 1][y] == 0 && grid[x + 1][y] != '*' && grid[x + 1][y] != color)
 	            {
 	                Point p=new Point(x +1, y);
 	                q.add(p);
 	                vis[x + 1][y] = 1;
 	            }
 			//For Downside Pixel or Cell
-			 if (x>0 && vis[x-1][y] == 0 && grid[x-1][y] != 'x' && grid[x-1][y] != color)
+			 if (x>0 && vis[x-1][y] == 0 && grid[x-1][y] != '*' && grid[x-1][y] != color)
 	            {
 	                Point p=new Point(x -1, y);
 	                q.add(p);
 	                vis[x - 1][y] = 1;
 	            }
 			//For Right side Pixel or Cell
-			 if (y<sdm.getHeight()-1 && vis[x][y+1] == 0 && grid[x][y+1] != 'x' && grid[x][y+1] != color)
+			 if (y<sdm.getHeight()-1 && vis[x][y+1] == 0 && grid[x][y+1] != '*' && grid[x][y+1] != color)
 	            {
 	                Point p=new Point(x, y+1);
 	                q.add(p);
 	                vis[x][y+1] = 1;
 	            }
 			// For Left side Pixel or Cell
-			 if (y>0 && vis[x][y-1] == 0 && grid[x][y-1] != 'x' && grid[x][y-1] != color)
+			 if (y>0 && vis[x][y-1] == 0 && grid[x][y-1] != '*' && grid[x][y-1] != color)
 	            {
 	                Point p=new Point(x, y-1);
 	                q.add(p);
